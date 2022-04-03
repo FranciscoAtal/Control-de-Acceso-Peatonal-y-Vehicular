@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: white;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 60vh;
+  }
+  
+  h1{
+      font-style: italic;
+  }
+  td, th{
+      vertical-align: middle!important;
+  }
+  td div{
+      background-size: cover;
+      width: 60px;
+      height: 60px;
+  }
+
+  input{
+      text-align: center;
+  }
