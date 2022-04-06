@@ -29,7 +29,6 @@ CREATE TABLE direcciones(
 );
 
 CREATE TABLE visitas (
-  id                     SERIAL,
   rut                    VARCHAR(10) NOT NULL,
   fecha_visita           TIMESTAMP NOT NULL DEFAULT NOW(),
   direccion_id           INT NOT NULL,
@@ -40,8 +39,9 @@ CREATE TABLE visitas (
   nro_patente            VARCHAR(15),
   hora_de_salida         TIME,
   rut_usuario            VARCHAR(10) NOT NULL,
-  PRIMARY KEY(id)
-  UNIQUE (rut, fecha_visita, direccion_id ),
+  PRIMARY KEY (rut, fecha_visita, direccion_id ),
+  FOREIGN KEY (direccion_id) REFERENCES direcciones(id),
+  FOREIGN KEY (rut_usuario) REFERENCES usuarios(rut)
 );
 
 INSERT INTO usuarios (rut, nombre, password) VALUES ('12345678-9', 'Portero Turno # 1', '123');

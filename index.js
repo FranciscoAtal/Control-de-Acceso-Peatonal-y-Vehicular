@@ -1,5 +1,8 @@
 const express = require("express")
 const { engine } = require("express-handlebars")
+const jwt = require("jsonwebtoken")
+const expressFileUpload = require('express-fileupload')
+const cookieParser = require("cookie-parser")
 const front = require("./routes/front.route.js")
 
 const port = process.env.PORT || 3000
@@ -7,7 +10,6 @@ const app = express()
 
 app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
-
 
 app.use(express.static("assets"));
 app.use(express.urlencoded({ extended: true }))

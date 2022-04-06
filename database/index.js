@@ -26,4 +26,9 @@ const probar = () => {
     .finally(() => pool.end())
 }
 
-module.exports = {migrar, probar, obtenerDirecciones}
+const buscar = async (rut, password) => {
+    const res = await pool.query('SELECT * from usuarios WHERE rut = $1 AND password = $2', [rut, password])
+    return res.rows[0]
+}
+
+module.exports = {migrar, probar, obtenerDirecciones, buscar}
