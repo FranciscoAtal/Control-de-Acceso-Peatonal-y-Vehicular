@@ -1,7 +1,7 @@
 
 <div class="card bg-primary text-center" style="width: 40rem;">
     <div class="card-body">
-        <form action="/iniciar-sesion">
+        <form action="/registrarme" method="post">
             <h3 class="card-title text-center m-auto">Iniciar Sesión</h3>
             <div class="row d-flex align-items-center mb-2">
                 <div class="col-12">R.u.t:</div>
@@ -15,17 +15,12 @@
                 <div class="col-12">Password:</div>
                 <div class="col-10 m-auto"><input type="text" name="password" class="form-control" /></div>
             </div>
-            <button class="btn bg-light my-3">Iniciar &#128373;</button>
-            <p>¿Aún no tienes cuenta? <a class="btn bg-light my-3" href="/registrarme">Regístrate</a></p>
+            <button class="btn bg-light my-3">Grabar</button>
         </form>
+            {{#if error}}
+    <div class="alert alert-danger" role="alert">
+        Usuario Ya Existe !!!
+    </div>
+    {{/if}}
     </div>
 </div>
-
-
-<a href="/crea-visita" class="btn btn-primary">Crear visita</a>
-
-<select name="direcciones" id="direcciones">
-    {{#each rows}}
-    <option value="{{this.id}}">{{this.nombre}}</option>
-    {{/each}}
-</select>

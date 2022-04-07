@@ -38,10 +38,10 @@ CREATE TABLE visitas (
   sexo                   VARCHAR(1)  NOT NULL,
   opcion                 VARCHAR(1)  NOT NULL,
   nro_patente            VARCHAR(15),
-  hora_de_salida         TIME,
+  hora_de_salida         TIMESTAMP,
   rut_usuario            VARCHAR(10) NOT NULL,
-  PRIMARY KEY(id)
-  UNIQUE (rut, fecha_visita, direccion_id ),
+  PRIMARY KEY(id),
+  UNIQUE (rut, fecha_visita, direccion_id)
 );
 
 INSERT INTO usuarios (rut, nombre, password) VALUES ('12345678-9', 'Portero Turno # 1', '123');
