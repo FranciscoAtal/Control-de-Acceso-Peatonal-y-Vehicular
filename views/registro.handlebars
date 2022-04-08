@@ -1,21 +1,21 @@
 
-<div class="card bg-primary text-center" style="width: 40rem;">
+<div class="card bg-primary text-center mx-auto mt-3" style="width: 40rem;>
     <div class="card-body">
         <form action="/registrarme" method="post">
-            <h3 class="card-title text-center m-auto">Iniciar Sesión</h3>
+            <h3 class="card-title text-center m-auto"><b>Ingreso Usuario</b></h3>
             <div class="row d-flex align-items-center mb-2">
-                <div class="col-12">R.u.t:</div>
+                <div class="col-12 my-2"><b>R.u.t:</b></div>
                 <div class="col-10 m-auto"><input type="text" name="rut" class="form-control" /></div>
             </div>
             <div class="row d-flex align-items-center mb-2">
-                <div class="col-12">Nombre:</div>
+                <div class="col-12 my-2"><b>Nombre:</b></div>
                 <div class="col-10 m-auto"><input type="text" name="nombre" class="form-control" /></div>
             </div>
             <div class="row d-flex align-items-center mb-2">
-                <div class="col-12">Password:</div>
+                <div class="col-12 my-2"><b>Password:</b></div>
                 <div class="col-10 m-auto"><input type="text" name="password" class="form-control" /></div>
             </div>
-            <button class="btn bg-light my-3">Grabar</button>
+            <button class="btn bg-light my-3"><b>Grabar</b></button>
         </form>
             {{#if error}}
     <div class="alert alert-danger" role="alert">

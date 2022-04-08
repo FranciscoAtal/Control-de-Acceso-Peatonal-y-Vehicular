@@ -1,55 +1,61 @@
 <div class="card bg-primary text-left mt-3 pb-3 mx-auto w-50">
   <div class="card-body">
     <form action="/creapropietarios" method="post">
-      <h3 class="card-title text-center m-auto">Ingreso Propietarios</h3>
+      <h3 class="card-title text-center m-auto"><u>Ingreso Propietarios</u></h3>
       <div class="mb-3">
-        <label class="form-label">Rut</label>
+        <label class="form-label"><b>R.u.t</b></label>
         <input name="rut" type="text" class="form-control">
       </div>
       <div class="mb-3">
-        <label class="form-label">Nombres</label>
+        <label class="form-label"><b>Nombres</b></label>
         <input name="nombres" type="text" class="form-control">
       </div>
       <div class="mb-3">
-        <label class="form-label">Apellidos</label>
+        <label class="form-label"><b>Apellidos</b></label>
         <input name="apellidos" type="text" class="form-control">
       </div>
       <div class="mb-3">
-        <label class="form-label border border-primary">Sexo Propietario : </label>
+        <label class="form-label border border-primary"><b>Sexo del Propietario</b></label>
         <div class="form-check form-check-inline">
-          <label class="form-label">Masculino</label>
+          <label class="form-label"><b>Masculino</b></label>
           <input type="radio" name="genero" value="M" id="" class="form-check-input">
         </div>
         <div class="form-check form-check-inline">
-          <label class="form-label">Femenino</label>
+          <label class="form-label"><b>Femenino</b></label>
           <input type="radio" name="genero" id="" value="F" class="form-check-input">
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Correo Electrónico</label>
+        <label class="form-label"><b>Correo Electrónico</b></label>
         <input name="email" type="text" class="form-control">
       </div>
-      <div class="mb-3">
-        <label class="form-label">Celular Principal</label>
-        <input name="celular1" type="text" class="form-control">
+      <div class="container">
+        <div class="row">
+          <div class="ml-1 mb-3 col-xs-12 col-md-12">
+            <div class="form-group">
+              <label for=""><b>Número de Celular</b></label>
+              <div class="input-group">
+                <input name="celular1" id="celular1" type="text" required class="form-control" placeholder="Principal">
+                <span class="input-group-addon"> - </span>
+                <input name="celular2" id="celular2" type="text" required class="form-control" placeholder="Secundario">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Celular Secundario</label>
-        <input name="celular2" type="text" class="form-control">
-      </div>
-           <div class="mb-3">
-        <label class="form-label border border-primary">Situación : </label>
+        <label class="form-label border border-primary"><b>Situación</b></label>
         <div class="form-check form-check-inline">
-          <label class="form-label">Propietario</label>
+          <label class="form-label"><b>Propietario</b></label>
           <input type="radio" name="situacion" value="P" id="" class="form-check-input">
         </div>
         <div class="form-check form-check-inline">
-          <label class="form-label">Arrienda</label>
+          <label class="form-label"><b>Arrienda</b></label>
           <input type="radio" name="situacion" id="" value="A" class="form-check-input">
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Dirección</label>
+        <label class="form-label"><b>Dirección</b></label>
         <select name="direccion_id" id="sss" class="form-select">
           {{#each rows}}
           <option value="{{this.id}}">{{this.nombre}}</option>
@@ -57,7 +63,7 @@
         </select>
       </div>
       <div class="mb-3 text-center">
-        <button class="btn bg-light my-3">Grabar</button>
+        <button class="btn bg-light my-3"><b>Grabar</b></button>
       </div>
     </form>
     {{#if error}}
