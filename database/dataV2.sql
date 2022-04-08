@@ -36,7 +36,7 @@ CREATE TABLE visitas (
   nombres                VARCHAR(20) NOT NULL,
   apellidos              VARCHAR(25) NOT NULL,
   sexo                   VARCHAR(1)  NOT NULL,
-  opcion                 BOOLEAN NOT NULL DEFAULT TRUE,
+  opcion                 VARCHAR(1)  NOT NULL,
   nro_patente            VARCHAR(15),
   hora_de_salida         TIMESTAMP,
   rut_usuario            VARCHAR(10) NOT NULL,
@@ -55,4 +55,4 @@ INSERT INTO direcciones (rut_propietario, nombre) VALUES
 ('11111111-1', 'Los Cerezos 1071');
 
 INSERT INTO visitas (rut, fecha_visita, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, hora_de_salida, rut_usuario) 
-    VALUES ('22222222-1', '30-03-2022 10:00:00', 2, 'Armando', 'Reyes Miranda', 'M', FALSE, 'JS 50 40', '30-03-2022 18:23:33', '12345678-9');
+    VALUES ('22222222-1', '30-03-2022 10:00:00', 2, 'Armando', 'Reyes Miranda', 'M', '2', 'JS 50 40', '18:23:33', '12345678-9');
