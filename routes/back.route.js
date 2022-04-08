@@ -31,23 +31,30 @@ router.post('/registrarme', async (req, res) => {
         res.redirect("/registrarme?error=" + err.code)
          console.log(err);
      })
+// Ingresar Direccion -- Debo Grabar la Nueva direccion o si existe ??
 })
 
 // Post /Registrarme
 router.post('/creavisitas', async (req, res) => {
     console.log(req.body);
-
     req.body.rut_usuario = req.usuario.rut
-
     console.log(req.body);
-
      ingresarVisita(req.body)
      .then(() => res.redirect('/'))
      .catch((err) => {
-         //res.send(err.detail)
         res.redirect("/registrarme?error=" + err.code)
          console.log(err);
      })
 })
 
+// Post /Registrarme
+router.post('/creapropietarios', async (req, res) => {
+    console.log(req.body);
+     ingresarPropietario(req.body)
+     .then(() => res.redirect('/'))
+     .catch((err) => {
+        res.redirect("/propietarios?error=" + err.code)
+         console.log(err);
+     })
+})
 module.exports = router

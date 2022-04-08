@@ -17,8 +17,8 @@ router.get('/registrarme', (req, res) => {
     res.render("registro", req.query);
 })
 
-router.get('/propietarios', (req, res) => {
-    res.render("propietarios", req.query);
+router.get('/propietarios', async (req, res) => {
+    res.render("creapropietarios", {rows: await obtenerDirecciones()});
 })
 
 router.get('/visitas', async (req, res) => {

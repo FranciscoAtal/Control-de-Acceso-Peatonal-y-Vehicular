@@ -37,7 +37,18 @@ const ingresarUsuario = ({rut, nombre, password}) => {
 }
 
 const ingresarVisita = ({rut, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, rut_usuario}) => {
-    const consulta = 'INSERT INTO usuarios(rut, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, rut_usuario) values($1, $2, $3, $4, $5, $6, $7)'
+    const consulta = 'INSERT INTO visitas(rut, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, rut_usuario) values($1, $2, $3, $4, $5, $6, $7)'
     return pool.query(consulta, [rut, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, rut_usuario])
 }
-module.exports = {migrar, probar, obtenerDirecciones, buscarPorRut, ingresarUsuario, ingresarVisita}
+
+const ingresarPropietario = ({rut, nombres, apellidos, sexo, email, nro_celular_principal, nro_celular_secundario, es_propietario}) => {
+    const consulta = 'INSERT INTO propietarios(rut, nombres, apellidos, sexo, email, nro_celular_principal, nro_celular_secundario, es_propietario) values($1, $2, $3, $4, $5, $6, $7, $8)'
+    return pool.query(consulta, [rut, nombres, apellidos, sexo, email, nro_celular_principal, nro_celular_secundario, es_propietario])
+}
+
+const ingresarDireccion = ({rut_propietario, nombre}) => {
+    const consulta = 'INSERT INTO direcciones(rut_propietario, nombre) values($1, $2)'
+    return pool.query(consulta, [rut_propietario, nombre])
+}
+
+module.exports = {migrar, probar, obtenerDirecciones, buscarPorRut, ingresarUsuario, ingresarVisita, ingresarPropietario, ingresarDireccion}
