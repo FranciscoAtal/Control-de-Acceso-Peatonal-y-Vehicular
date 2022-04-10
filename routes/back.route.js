@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { obtenerDirecciones, buscarPorRut, ingresarUsuario, ingresarVisita } = require("../database");
+const { buscarPorRut, ingresarUsuario, ingresarVisita, ingresarPropietario } = require("../database");
 const jwt = require("jsonwebtoken")
 
 const secretKey = process.env["JWT_SECRET"]

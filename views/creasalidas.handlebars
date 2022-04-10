@@ -1,6 +1,5 @@
-<div class="py-4">
-  <h2>Administración</h2>
-  <hr class="w-50" />
+<div class="text-center py-4">
+  <h2><u><b>Registro Salida Visitas</b></u></h2>
 
   <table class="table w-50 m-auto">
     <thead>
@@ -20,6 +19,7 @@
         <td>{{this.nombres}}</td>
         <td>{{this.apellidos}}</td>
         <td>{{this.direccion_id}}</td>
+        <td>{{this.fecha_visita}}</td>
         <td><input type="checkbox" {{#if this.estado}}checked{{/if}} onchange="hello({{this.id}}, this.checked)"/></td>
       </tr>
       {{/each}}

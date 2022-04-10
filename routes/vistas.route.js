@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { obtenerDirecciones, buscarPorRut } = require("../database");
+const { obtenerDirecciones, listarVisitas, cambioEstado } = require("../database");
 
 const secretKey = process.env["JWT_SECRET"]
 
