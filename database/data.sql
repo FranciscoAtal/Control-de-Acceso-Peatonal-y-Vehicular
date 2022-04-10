@@ -40,6 +40,7 @@ CREATE TABLE visitas (
   nro_patente            VARCHAR(15),
   hora_de_salida         TIMESTAMP,
   rut_usuario            VARCHAR(10) NOT NULL,
+  estado                 BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY(id),
   UNIQUE (rut, fecha_visita, direccion_id)
 );

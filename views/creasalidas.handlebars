@@ -1,0 +1,34 @@
+<div class="py-4">
+  <h2>Administración</h2>
+  <hr class="w-50" />
+
+  <table class="table w-50 m-auto">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Fecha de Visita</th>
+        <th scope="col">Salida</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each visitas}}
+      <tr>
+        <td>{{sumarUno @index}}</td>
+        <td>{{this.nombres}}</td>
+        <td>{{this.apellidos}}</td>
+        <td>{{this.direccion_id}}</td>
+        <td><input type="checkbox" {{#if this.estado}}checked{{/if}} onchange="hello({{this.id}}, this.checked)"/></td>
+      </tr>
+      {{/each}}
+  </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  const hello = (id, checked) => {
+    console.log(`Salida de la visita: ${id} es ${checked}`)
+    axios.put(`/estado/${id}/${checked}`)
+  }
+</script>

@@ -8,7 +8,13 @@ const routes = require("./routes")
 const port = process.env.PORT || 3000
 const app = express()
 
-app.engine("handlebars", engine())
+app.engine('handlebars', engine({
+    helpers: {
+        sumarUno: (n) => +n + 1
+    }
+}))
+
+//app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
 
 app.use(express.static("assets"));

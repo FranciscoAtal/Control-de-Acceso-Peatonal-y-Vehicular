@@ -26,6 +26,17 @@ router.get('/visitas', async (req, res) => {
     res.render("creavisitas", {rows: await obtenerDirecciones()});
 })
 
+router.get('/salidas', async (req, res) => {
+    const arr = await listarVisitas();
+    res.render("creasalidas", { visitas: arr });
+})
+
+router.put('/estado/:id/:estado', async (req, res) => {
+    const { id, estado } = req.params
+    await cambioEstado(id, estado)
+    res.send("")
+})
+
 router.get('/logout', async (req, res) => {
     res.clearCookie("token").redirect("/")
 })

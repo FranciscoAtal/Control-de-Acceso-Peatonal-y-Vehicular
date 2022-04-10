@@ -19,6 +19,15 @@ const obtenerDirecciones = () => {
     return pool.query("Select * from direcciones").then(res => res.rows)
 }
 
+const listarVisitas = async () => {
+    const res = await pool.query('SELECT * from visitas where estado = FALSE')
+    return res.rows
+}
+
+const cambioEstado = (id, estado) => {
+    return pool.query('UPDATE visitas set estado = $2 WHERE id = $1', [id, estado])
+}
+
 const probar = () => {
     obtenerDirecciones()
     .then(rows => console.log(rows))
@@ -51,4 +60,4 @@ const ingresarDireccion = ({rut_propietario, nombre}) => {
     return pool.query(consulta, [rut_propietario, nombre])
 }
 
-module.exports = {migrar, probar, obtenerDirecciones, buscarPorRut, ingresarUsuario, ingresarVisita, ingresarPropietario, ingresarDireccion}
+module.exports = {migrar, probar, obtenerDirecciones, listarVisitas, cambioEstado, buscarPorRut, ingresarUsuario, ingresarVisita, ingresarPropietario, ingresarDireccion}

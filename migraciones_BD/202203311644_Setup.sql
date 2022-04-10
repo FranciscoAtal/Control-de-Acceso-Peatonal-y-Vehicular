@@ -1,4 +1,4 @@
--- 1. Crear una base de datos con nombre “condominio”.
+--  1. Crear una base de datos con nombre “condominio”.
 
    CREATE DATABASE condominio;
 
@@ -8,7 +8,7 @@
 -- Borrar tablas 
    DROP TABLE IF EXISTS  usuarios, propietarios, direcciones, visitas;
 
--- 2. Crear una tabla “usuarios”, con los atributos rut, nombre, password
+--  2. Crear una tabla “usuarios”, con los atributos rut, nombre, password
 
 CREATE TABLE usuarios(
   rut         VARCHAR(10) NOT NULL,
@@ -16,7 +16,8 @@ CREATE TABLE usuarios(
   password    VARCHAR(16) NOT NULL,
   PRIMARY KEY (rut)
 );
--- 3. Crear una tabla “direcciones”, con los atributos direccion_id, direccion_nombre
+
+--  3. Crear una tabla “direcciones”, con los atributos direccion_id, direccion_nombre
 
 CREATE TABLE direcciones(  
   id               SERIAL,
@@ -26,7 +27,7 @@ CREATE TABLE direcciones(
   FOREIGN key (rut_propietario) REFERENCES propietarios(rut)
 );
 
--- 4. Crear una tabla “propietarios”, con los atributos:
+--  4. Crear una tabla “propietarios”, con los atributos:
 
 CREATE TABLE propietarios (
   rut                    VARCHAR(10) NOT NULL,
@@ -42,7 +43,7 @@ CREATE TABLE propietarios (
   FOREIGN KEY (direccion_id) REFERENCES direcciones(id)
 );
 
--- 5. Crear una tabla “visitas”, con los atributos:
+--  5. Crear una tabla “visitas”, con los atributos:
 
 CREATE TABLE visitas (
   rut                    VARCHAR(10) NOT NULL,
@@ -59,24 +60,35 @@ CREATE TABLE visitas (
   FOREIGN KEY (rut_usuario) REFERENCES usuarios(rut)
 );
 
--- 6. Insertar registro en la tabla de usuarios.-
+--  6. Insertar registro en la tabla de usuarios.-
 
    INSERT INTO usuarios (rut, nombre, password) VALUES ('12345678-9', 'Portero Turno # 1', '123');
 
--- 7. Insertar registro en la tabla de propietarios.- 
+--  7. Hacer COMMIT a la tabla usuarios.-
+COMMIT;
+
+--  8. Insertar registro en la tabla de propietarios.- 
 
 INSERT INTO propietarios(rut, nombres, apellidos, sexo, email, nro_celular_principal, direccion_id)
 VALUES ('11111111-1', 'Jose Patricio', 'Reyes Miranda', 'M', 'josepatricio@gmail,com', '(+56) 993347673', 3);
-    
--- 8. Insertar registro en la tabla de direcciones.-
+
+--  9. Hacer COMMIT a la tabla usuarios.-
+COMMIT;
+
+-- 10. Insertar registro en la tabla de direcciones.-
 
 INSERT INTO direcciones (rut_propietario, nombre) VALUES
 ('11111111-1', 'Los Cerezos 1051'),
 ('11111111-1', 'Los Cerezos 1061'),
 ('11111111-1', 'Los Cerezos 1071');
 
--- 9. Insertar registro en la tabla de visitas.- 
+-- 11. Hacer COMMIT a la tabla usuarios.-
+COMMIT;
+
+-- 12. Insertar registro en la tabla de visitas.- 
 
 INSERT INTO visitas (rut, fecha_visita, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, hora_de_salida, rut_usuario) 
     VALUES ('22222222-1', '30-03-2022 10:00:00', 2, 'Armando', 'Reyes Miranda', 'M', '2', 'JS 50 40', '18:23:33', '12345678-9');
 
+-- 13. Hacer COMMIT a la tabla usuarios.-
+COMMIT;
