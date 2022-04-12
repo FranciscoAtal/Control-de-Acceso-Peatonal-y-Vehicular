@@ -1,34 +1,40 @@
-<div class="text-center py-4">
-  <h2><u><b>Registro Salida Visitas</b></u></h2>
+  <div class="card bg-primary text-center mx-auto mt-3" style="width: 60rem;">
+  <div class="card-body">
+    <div class="text-center py-4">
+      <h2><u><b>Registro Salida Visitas</b></u></h2>
 
-  <table class="table w-50 m-auto">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombres</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Dirección</th>
-        <th scope="col">Fecha de Visita</th>
-        <th scope="col">Salida</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each visitas}}
-      <tr>
-        <td>{{sumarUno @index}}</td>
-        <td>{{this.nombres}}</td>
-        <td>{{this.apellidos}}</td>
-        <td>{{this.direccion_id}}</td>
-        <td>{{this.fecha_visita}}</td>
-        <td><input type="checkbox" {{#if this.estado}}checked{{/if}} onchange="hello({{this.id}}, this.checked)"/></td>
-      </tr>
-      {{/each}}
-  </table>
+      <table class="table w-60 m-auto">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Fecha de Visita</th>
+            <th scope="col">Salida</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each visitas}}
+          <tr>
+            <td>{{sumarUno @index}}</td>
+            <td>{{this.nombres}}</td>
+            <td>{{this.apellidos}}</td>
+            <td>{{this.nombre}}</td>
+            <td>{{fechahoy this.fecha_visita}}</td>
+            <td><input type="checkbox" {{#if this.estado}}checked{{/if}} onchange="hello({{this.id}}, this.checked)" />
+            </td>
+          </tr>
+          {{/each}}
+      </table>
+    </div>
+  </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
   const hello = (id, checked) => {
     console.log(`Salida de la visita: ${id} es ${checked}`)
     axios.put(`/estado/${id}/${checked}`)
+    .then(() => window.location.href = "/salidas")
   }
 </script>

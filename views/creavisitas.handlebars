@@ -26,23 +26,24 @@
         <label class="form-label border border-primary"><b>Sexo del Visitante : </b></label>
         <div class="form-check form-check-inline">
           <label class="form-label"><b>Masculino</b></label>
-          <input type="radio" name="genero" value="M" id="" class="form-check-input">
+          <input type="radio" name="sexo" value="M" id="" class="form-check-input">
         </div>
         <div class="form-check form-check-inline">
           <label class="form-label"><b>Femenino</b></label>
-          <input type="radio" name="genero" id="" value="F" class="form-check-input">
+          <input type="radio" name="sexo" id="" value="F" class="form-check-input">
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label border border-primary ml-1"><b>Ingreso del Visitante : </b></label>
         <div class="form-check form-check-inline">
           <label class="form-label"><b>En Auto</b></label>
-          <input type="checkbox" name="opcion" id="" onchange="cambio(this.checked)" class="form-check-input">
+          <input type="checkbox" onchange="cambiar(this.checked)" class="form-check-input">
+          <input type="hidden" name="opcion" id="opcion" value="false">
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label"><b>Nro. Patente</b></label>
-        <input name="nropatente" id="patente" type="text" class="form-control">
+        <input name="nropatente" disabled id="patente" type="text" class="form-control">
       </div>
       <div class="mb-3 text-center">
         <button class="btn bg-light my-3"><b>Grabar</b></button>
@@ -58,9 +59,12 @@
 
 <script>
   const patente = document.querySelector("#patente")
-  const cambio = (checked) => {
-    if (checked)
+  const opcion = document.querySelector("#opcion")
+
+  const cambiar = (checked) => {
+    if (!checked)
       patente.value = '';
-    patente.disabled = checked;
+    patente.disabled = !checked;
+    opcion.value = checked;
   }
 </script>
