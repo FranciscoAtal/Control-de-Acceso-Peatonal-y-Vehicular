@@ -23,6 +23,3 @@ CREATE TABLE visitas (
 
 INSERT INTO visitas (rut, fecha_visita, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, hora_de_salida, rut_usuario) 
     VALUES ('22222222-1', '30-03-2022 10:00:00', 2, 'Armando', 'Reyes Miranda', 'M', '2', 'JS 50 40', '18:23:33', '12345678-9');
-
--- 4. Hacer COMMIT a la tabla visitas.-
-COMMIT;

@@ -67,9 +67,7 @@ router.put('/estado/:id/:estado', async (req, res) => {
 
 router.delete("/propietarios/:rut", (req, res) => {
     const {rut} = req.params
-
     console.log(rut);
-
     borrarPropietario(rut).then(() => {
         return eliminar(rut).then(() => res.send("eliminado"))
     }).catch(console.error)

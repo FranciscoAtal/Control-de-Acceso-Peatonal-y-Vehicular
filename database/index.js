@@ -14,8 +14,15 @@ const migrar = () => {
     .finally(() => pool.end())
 }
 
+const probar = () => {
+    obtenerDirecciones()
+    .then(rows => console.log(rows))
+    .catch(console.error)
+    .finally(() => pool.end())
+}
+
 const obtenerDirecciones = () => {
-    return pool.query("Select * from direcciones ORDER BY nombre ASC").then(res => res.rows)
+    return pool.query("SELECT * FROM direcciones ORDER BY nombre ASC").then(res => res.rows)
 }
 
 const listarVisitas = async () => {
@@ -24,24 +31,17 @@ const listarVisitas = async () => {
 }
 
 const borrarPropietario = (rut) => {
-    return pool.query("UPDATE direcciones SET rut_propietario='11111111-1' WHERE rut_propietario=$1", [rut])
+    return pool.query("UPDATE direcciones SET rut_propietario='1-9' WHERE rut_propietario=$1", [rut])
 }
 
 const listarPropietarios = async () => {
-    const res = await pool.query('SELECT p.rut,p.nombres,p.apellidos,d.nombre,p.email, p.nro_celular_principal from propietarios p INNER JOIN direcciones d ON p.rut = d.rut_propietario')
+    const res = await pool.query("SELECT p.rut,p.nombres,p.apellidos,d.nombre,p.email, p.nro_celular_principal from propietarios p INNER JOIN direcciones d ON p.rut = d.rut_propietario WHERE d.rut_propietario <> '1-9'")
     return res.rows
 }
 
 const cambioEstado = ({id, estado}) => {
     console.log(id, estado);
-    return pool.query('UPDATE visitas SET estado = $2, hora_de_salida =  NOW() WHERE id = $1', [id, estado])
-}
-
-const probar = () => {
-    obtenerDirecciones()
-    .then(rows => console.log(rows))
-    .catch(console.error)
-    .finally(() => pool.end())
+    return pool.query('UPDATE visitas SET estado = $2, hora_de_salida = NOW() WHERE id = $1', [id, estado])
 }
 
 const buscarPorRut = async (rut, password) => {
