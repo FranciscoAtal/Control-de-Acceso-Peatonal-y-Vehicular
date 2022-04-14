@@ -1,0 +1,45 @@
+<div class="card bg-primary text-center mx-auto mt-3" style="width: 60rem;">
+  <div class="card-body">
+
+    <div class="text-center py-4">
+      <h2><u><b>Propietarios</b></u></h2>
+      <div>
+        <table class="table w-60 m-auto">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Rut</th>
+              <th scope="col">Nombres</th>
+              <th scope="col">Apellidos</th>
+              <th scope="col">Dirección</th>
+              <th scope="col">Email</th>
+              <th scope="col">Nro. Celular</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each propietarios}}
+            <tr>
+              <td>{{sumarUno @index}}</td>
+              <td>{{this.rut}}</td>
+              <td>{{this.nombres}}</td>
+              <td>{{this.apellidos}}</td>
+              <td>{{this.nombre}}</td>
+              <td>{{this.email}}</td>
+              <td>{{this.nro_celular_principal}}</td>
+              <td><button onclick="eliminar({{this.rut}})" class="btn btn-danger">Eliminar</button></td>
+            </tr>
+            {{/each}}
+        </table>
+
+        <a class="btn bg-light my-3" href="/propietarios/crear"><b>Crear</b></a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const eliminar = (rut) => {
+    fetch("/propietarios/" + rut, { method: "delete" })
+      .then(() => window.location.reload())
+      .catch(console.error)
+  }
+</script>

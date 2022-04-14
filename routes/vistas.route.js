@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { obtenerDirecciones, listarVisitas } = require("../database");
+const { obtenerDirecciones, listarVisitas, listarPropietarios } = require("../database");
 
 const secretKey = process.env["JWT_SECRET"]
 
@@ -18,7 +18,8 @@ router.get('/registrarme', (req, res) => {
 })
 
 router.get('/propietarios', async (req, res) => {
-    res.render("creapropietarios", {rows: await obtenerDirecciones()});
+    const arr = await listarPropietarios();
+    res.render("datospropietarios", { propietarios: arr });
 })
 
 router.get('/visitas', async (req, res) => {
@@ -32,6 +33,10 @@ router.get('/salidas', async (req, res) => {
 
 router.get('/logout', async (req, res) => {
     res.clearCookie("token").redirect("/")
+})
+
+router.get('/propietarios/crear', async  (req, res) => {
+    res.render("creapropietarios", {rows: await obtenerDirecciones()});
 })
 
 module.exports = router

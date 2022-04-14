@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { buscarPorRut, ingresarUsuario, ingresarVisita, ingresarPropietario, cambioEstado } = require("../database");
+const { buscarPorRut, ingresarUsuario, ingresarVisita, ingresarPropietario, cambioEstado, eliminar, borrarPropietario } = require("../database");
 const jwt = require("jsonwebtoken")
 
 const secretKey = process.env["JWT_SECRET"]
@@ -53,8 +53,7 @@ router.post('/creapropietarios', async (req, res) => {
      .catch((err) => {
         res.redirect("/propietarios?error=" + err.code)
          console.log(err);
-     })
-// Aqui se debe grabar la direccion del propietario en el archivo direcciones     
+     })     
 })
 
 router.put('/estado/:id/:estado', async (req, res) => {
@@ -64,6 +63,16 @@ router.put('/estado/:id/:estado', async (req, res) => {
          console.log(err);
      })
     res.send("")
+})
+
+router.delete("/propietarios/:rut", (req, res) => {
+    const {rut} = req.params
+
+    console.log(rut);
+
+    borrarPropietario(rut).then(() => {
+        return eliminar(rut).then(() => res.send("eliminado"))
+    }).catch(console.error)
 })
 
 module.exports = router
