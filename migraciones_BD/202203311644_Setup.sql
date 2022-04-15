@@ -62,7 +62,7 @@ CREATE TABLE visitas (
 
 --  6. Insertar registro en la tabla de usuarios.-
 
-   INSERT INTO usuarios (rut, nombre, password) VALUES ('12345678-9', 'Portero Turno # 1', '123');
+   INSERT INTO usuarios (rut, nombre, password) VALUES ('123456785', 'Portero Turno # 1', '123');
 
 --  7. Hacer COMMIT a la tabla usuarios.-
 COMMIT;
@@ -70,7 +70,7 @@ COMMIT;
 --  8. Insertar registro en la tabla de propietarios.- 
 
 INSERT INTO propietarios(rut, nombres, apellidos, sexo, email, nro_celular_principal, direccion_id)
-VALUES ('11111111-1', 'Jose Patricio', 'Reyes Miranda', 'M', 'josepatricio@gmail,com', '(+56) 993347673', 3);
+VALUES ('111111111', 'Jose Patricio', 'Reyes Miranda', 'M', 'josepatricio@gmail,com', '(+56) 993347673', 3);
 
 --  9. Hacer COMMIT a la tabla usuarios.-
 COMMIT;
@@ -78,9 +78,9 @@ COMMIT;
 -- 10. Insertar registro en la tabla de direcciones.-
 
 INSERT INTO direcciones (rut_propietario, nombre) VALUES
-('11111111-1', 'Los Cerezos 1051'),
-('11111111-1', 'Los Cerezos 1061'),
-('11111111-1', 'Los Cerezos 1071');
+('111111111', 'Los Cerezos 1051'),
+('111111111', 'Los Cerezos 1061'),
+('111111111', 'Los Cerezos 1071');
 
 -- 11. Hacer COMMIT a la tabla usuarios.-
 COMMIT;
@@ -88,4 +88,4 @@ COMMIT;
 -- 12. Insertar registro en la tabla de visitas.- 
 
 INSERT INTO visitas (rut, fecha_visita, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, hora_de_salida, rut_usuario) 
-    VALUES ('222222222', '30-03-2022 10:00:00', 2, 'Armando', 'Reyes Miranda', 'M', '2', 'JS 50 40', '18:23:33', '12345678-1');
+    VALUES ('222222222', '30-03-2022 10:00:00', 2, 'Armando', 'Reyes Miranda', 'M', '2', 'JS 50 40', '18:23:33', '123456785');
