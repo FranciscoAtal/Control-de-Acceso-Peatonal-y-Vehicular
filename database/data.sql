@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS direcciones, usuarios, propietarios, visitas;
 
 CREATE TABLE usuarios(
@@ -45,7 +44,7 @@ CREATE TABLE visitas (
   UNIQUE (rut, fecha_visita, direccion_id)
 );
 
-INSERT INTO usuarios (rut, nombre, password) VALUES ('12345678-9', 'Portero Turno # 1', '123');
+INSERT INTO usuarios (rut, nombre, password) VALUES ('123456789', 'Portero Turno # 1', '123');
 
 INSERT INTO propietarios(rut, nombres, apellidos, sexo, email, nro_celular_principal)
 VALUES ('1-9', 'Condominio', 'Valle Aplacible', 'M', 'condominiovalleapacible@gmail.com', '(+56) 993347673');
@@ -65,4 +64,4 @@ INSERT INTO direcciones (rut_propietario, nombre) VALUES
 ('1-9', 'Los Tulipanes 1671');
 
 INSERT INTO visitas (rut, fecha_visita, direccion_id, nombres, apellidos, sexo, opcion, nro_patente, rut_usuario) 
-    VALUES ('2222222222', '30-03-2022 10:00:00', 2, 'Armando', 'Reyes Miranda', 'M', FALSE, 'JS 50 40', '12345678-9');
+    VALUES ('222222222', '30-03-2022 10:00:00', 2, 'Armando', 'Reyes Miranda', 'M', FALSE, 'JS 50 40', '123456789');
