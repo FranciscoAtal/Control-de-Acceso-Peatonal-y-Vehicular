@@ -22,7 +22,7 @@ const probar = () => {
 }
 
 const obtenerDirecciones = () => {
-    return pool.query("SELECT * FROM direcciones ORDER BY nombre ASC").then(res => res.rows)
+    return pool.query("SELECT * FROM direcciones WHERE rut_propietario = '1-9' ORDER BY nombre ASC").then(res => res.rows)
 }
 
 const listarVisitas = async () => {
