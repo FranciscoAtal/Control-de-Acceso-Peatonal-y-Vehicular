@@ -25,6 +25,12 @@ const obtenerDirecciones = () => {
     return pool.query("SELECT * FROM direcciones WHERE rut_propietario = '1-9' ORDER BY nombre ASC").then(res => res.rows)
 }
 
+
+const obtenerDirecciones2 = () => {
+    return pool.query("SELECT * FROM direcciones WHERE rut_propietario != '1-9' ORDER BY nombre ASC").then(res => res.rows)
+}
+
+
 const listarVisitas = async () => {
     const res = await pool.query('SELECT v.id,v.nombres,v.apellidos,d.nombre,v.fecha_visita from visitas v INNER JOIN direcciones d ON v.direccion_id = d.id WHERE estado = FALSE')
     return res.rows
@@ -70,4 +76,4 @@ const ingresarPropietario = ({rut, nombres, apellidos, sexo, email, nro_celular_
 
 const eliminar = (rut) => pool.query('DELETE FROM propietarios WHERE rut=$1', [rut])
 
-module.exports = {borrarPropietario, migrar, probar, obtenerDirecciones, listarVisitas, listarPropietarios, cambioEstado, buscarPorRut, ingresarUsuario, ingresarVisita, ingresarPropietario, eliminar}
+module.exports = {borrarPropietario, migrar, probar, obtenerDirecciones, obtenerDirecciones2,listarVisitas, listarPropietarios, cambioEstado, buscarPorRut, ingresarUsuario, ingresarVisita, ingresarPropietario, eliminar}

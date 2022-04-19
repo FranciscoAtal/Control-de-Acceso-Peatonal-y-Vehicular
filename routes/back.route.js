@@ -51,7 +51,7 @@ router.post('/creapropietarios', async (req, res) => {
      ingresarPropietario(req.body)
      .then(() => res.redirect('/iniciar-sesion'))
      .catch((err) => {
-        res.redirect("/propietarios?error=" + err.code)
+        res.redirect("/propietarios/crear?error=" + err.code)
          console.log(err);
      })     
 })

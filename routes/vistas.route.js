@@ -1,5 +1,6 @@
 const { Router } = require("express");
-const { obtenerDirecciones, listarVisitas, listarPropietarios } = require("../database");
+const { obtenerDirecciones, listarVisitas, listarPropietarios, obtenerDirecciones2 } = require("../database");
+const { guardia } = require("../middlewares/parsear-token");
 
 const secretKey = process.env["JWT_SECRET"]
 
@@ -9,7 +10,7 @@ router.get("/", async (req, res) => {
     res.render("home",  req.query)
 })
 
-router.get("/iniciar-sesion", (req, res) => {
+router.get("/iniciar-sesion", guardia, (req, res) => {
     res.render("login", req);
 })
 
@@ -23,7 +24,7 @@ router.get('/propietarios', async (req, res) => {
 })
 
 router.get('/visitas', async (req, res) => {
-    res.render("creavisitas", {rows: await obtenerDirecciones()});
+    res.render("creavisitas", {rows: await obtenerDirecciones2()});
 })
 
 router.get('/salidas', async (req, res) => {
