@@ -21,6 +21,7 @@ router.post('/iniciar-sesion', async (req, res) => {
         res.redirect("/?error=1")
     }
 });
+
 // post /registrarme
 router.post('/registrarme', async (req, res) => {
     console.log(req.body);
