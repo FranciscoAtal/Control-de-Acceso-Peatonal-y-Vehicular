@@ -4,7 +4,12 @@ const fs = require("fs")
 const path = require("path")
 
 
-const pool = new Pool()
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+})
 
 const migrar = () => {
     const data = fs.readFileSync(path.join(__dirname, "data.sql"), {encoding:"utf8"})
